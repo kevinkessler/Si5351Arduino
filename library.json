@@ -1,5 +1,5 @@
 {
-    "name": "Etherkit Si5351",
+    "name": "Etherkit Si5351(kmk)",
     "keywords": "si5351",
     "description": "A full-featured library for the Si5351 series of clock generator ICs from Silicon Labs",
     "repository":
