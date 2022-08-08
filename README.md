@@ -1,3 +1,16 @@
+Modifications from Original Library
+===================================
+This version of the library has been modified from the original in two ways. First, the define of **SI5351_PLL_VCO_MIN** has been changed to 380000000 in order to allow quadrature signal generation through the 80M band, as discussed by Charlie Morris here: [https://www.youtube.com/watch?v=XO6TSkcpwOk&ab_channel=CharlieMorris](https://www.youtube.com/watch?v=XO6TSkcpwOk&ab_channel=CharlieMorris). Second, the code has been modified to allow the specification of a different I2C bus, rather than just the default one.
+
+    si5351.init(SI5351_CRYSTAL_LOAD_8PF, 0, 0,&Wire2);
+
+if no I2C bus is specified
+
+    si5351.init(SI5351_CRYSTAL_LOAD_8PF, 0, 0);`
+
+the library uses the default I2C device.
+
+
 Si5351 Library for Arduino
 ==========================
 This is a library for the Si5351 series of clock generator ICs from [Silicon Labs](http://www.silabs.com) for the Arduino development environment. It will allow you to control the Si5351 with an Arduino, and without depending on the proprietary ClockBuilder software from Silicon Labs.

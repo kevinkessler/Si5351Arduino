@@ -41,7 +41,8 @@
 #define SI5351_FREQ_MULT                100ULL
 #define SI5351_DEFAULT_CLK              1000000000ULL
 
-#define SI5351_PLL_VCO_MIN              600000000
+//#define SI5351_PLL_VCO_MIN              600000000
+#define SI5351_PLL_VCO_MIN              380000000
 #define SI5351_PLL_VCO_MAX              900000000
 #define SI5351_MULTISYNTH_MIN_FREQ      500000
 #define SI5351_MULTISYNTH_DIVBY4_FREQ   150000000
@@ -280,7 +281,7 @@ class Si5351
 {
 public:
   Si5351(uint8_t i2c_addr = SI5351_BUS_BASE_ADDR);
-	bool init(uint8_t, uint32_t, int32_t);
+	bool init(uint8_t, uint32_t, int32_t, TwoWire *theWire = &Wire);
 	void reset(void);
 	uint8_t set_freq(uint64_t, enum si5351_clock);
 	uint8_t set_freq_manual(uint64_t, uint64_t, enum si5351_clock);
@@ -326,6 +327,8 @@ private:
 	void ms_div(enum si5351_clock, uint8_t, uint8_t);
 	uint8_t select_r_div(uint64_t *);
 	uint8_t select_r_div_ms67(uint64_t *);
+
+	TwoWire *i2c;
 	int32_t ref_correction[2];
   uint8_t clkin_div;
   uint8_t i2c_bus_addr;
